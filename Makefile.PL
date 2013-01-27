@@ -4,12 +4,11 @@ WriteMakefile(
     NAME              => 'Log::Dispatch::ZeroMQ',
     VERSION_FROM      => 'lib/Log/Dispatch/ZeroMQ.pm',
     PREREQ_PM         => {
-        parent  => 0,
-        ZMQ => 0,
-        'Log::Dispatch' => 0,
-        Carp => 0,
+        parent             => 0,
+        ZMQ                => 0,
+        'Log::Dispatch'    => 0,
+        Carp               => 0,
         'Test::SharedFork' => 0,
-        'Package::Stash' => 0,
     },
     ($] >= 5.005 ?
       (ABSTRACT_FROM  => 'lib/Log/Dispatch/ZeroMQ.pm',

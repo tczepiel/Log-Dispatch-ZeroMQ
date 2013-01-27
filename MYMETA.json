@@ -34,7 +34,6 @@
          "requires" : {
             "Carp" : "0",
             "Log::Dispatch" : "0",
-            "Package::Stash" : "0",
             "Test::SharedFork" : "0",
             "ZMQ" : "0",
             "parent" : "0"

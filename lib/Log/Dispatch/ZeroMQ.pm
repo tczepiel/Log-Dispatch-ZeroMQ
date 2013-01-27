@@ -5,24 +5,28 @@ use warnings;
 
 our $VERSION = '0.01';
 
+#ABSTRACT: ZMQ backend for Log::Dispatch
+
 use parent 'Log::Dispatch::Output';
 use ZMQ ();
 use ZMQ::Constants ":all";
 use Carp qw(croak);
-use Package::Stash;
 
 sub new {
     my ( $class, %params ) = @_;
 
-    my $p = Package::Stash->new('ZMQ::Constants');
-    my $sock_type = $params{zmq_sock_type};
-    unless ( $p->has_symbol("&".$sock_type) ) {
+    my $sock_type = do {
+        no strict 'refs';
+        &{ "ZMQ::Constants::$params{zmq_sock_type}" };
+    };
+    
+    unless ( defined $sock_type ) {
         croak "ZMQ::Constants doesn't export '$sock_type'";
     }
 
 
     bless {
-       _zmq_sock_type => $p->get_symbol('&'.$sock_type)->(),
+       _zmq_sock_type => $sock_type,
        _zmq_bind      => $params{zmq_bind},
     } => $class;
 }
