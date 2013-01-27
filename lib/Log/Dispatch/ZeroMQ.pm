@@ -6,18 +6,18 @@ use warnings;
 our $VERSION = '0.01';
 
 use parent 'Log::Dispatch::Output';
-use ZeroMQ ();
-use ZeroMQ::Constants ();
+use ZMQ ();
+use ZMQ::Constants ":all";
 use Carp qw(croak);
 use Package::Stash;
 
 sub new {
     my ( $class, %params ) = @_;
 
-    my $p = Package::Stash->new('ZeroMQ::Constants');
+    my $p = Package::Stash->new('ZMQ::Constants');
     my $sock_type = $params{zmq_sock_type};
     unless ( $p->has_symbol("&".$sock_type) ) {
-        croak "ZeroMQ doesn't export '$sock_type'";
+        croak "ZMQ::Constants doesn't export '$sock_type'";
     }
 
 
@@ -33,7 +33,7 @@ sub _zmq {
 
     return $_zmq_sock if defined $_zmq_sock;
 
-    $_zmq_ctx     = ZeroMQ::Context->new();
+    $_zmq_ctx     = ZMQ::Context->new();
     my $_zmq_sock = $_zmq_ctx->socket($self->{_zmq_sock_type});
     $_zmq_sock->connect($self->{_zmq_bind});
     return $_zmq_sock;

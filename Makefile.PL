@@ -5,7 +5,7 @@ WriteMakefile(
     VERSION_FROM      => 'lib/Log/Dispatch/ZeroMQ.pm',
     PREREQ_PM         => {
         parent  => 0,
-        ZeroMQ  => 0,
+        ZMQ => 0,
         'Log::Dispatch' => 0,
         Carp => 0,
         'Test::SharedFork' => 0,

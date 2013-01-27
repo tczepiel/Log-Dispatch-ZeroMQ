@@ -5,7 +5,8 @@ use Test::More tests => 2;
 
 use Log::Dispatch;
 use Test::SharedFork;
-use ZeroMQ "ZMQ_REQ", "ZMQ_REP";
+use ZMQ;
+use ZMQ::Constants qw(:all);
 use POSIX ":sys_wait_h";
 
 sub _log {
@@ -30,7 +31,7 @@ if ( $pid == 0 ) {
     ok(1);
 }
 else {
-    my $ctx    = ZeroMQ::Context->new;
+    my $ctx    = ZMQ::Context->new;
     my $socket = $ctx->socket(ZMQ_REP);
     $socket->bind("tcp://127.0.0.1:8881");
 
