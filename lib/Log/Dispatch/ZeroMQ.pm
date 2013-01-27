@@ -21,7 +21,7 @@ sub new {
     };
     
     unless ( defined $sock_type ) {
-        croak "ZMQ::Constants doesn't export '$sock_type'";
+        croak "ZMQ::Constants doesn't export '$params{zmq_sock_type}'";
     }
 
 
