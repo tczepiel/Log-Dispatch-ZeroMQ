@@ -24,7 +24,7 @@ sub _log {
 my $pid = Test::SharedFork->fork();
 
 if ( $pid == 0 ) {
-    my $log = _log(ZMQ_REQ);
+    my $log = _log('ZMQ_REQ');
 
     $log->info("Hello!");
     ok(1);

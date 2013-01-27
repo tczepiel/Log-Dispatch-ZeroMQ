@@ -9,6 +9,7 @@ WriteMakefile(
         'Log::Dispatch' => 0,
         Carp => 0,
         'Test::SharedFork' => 0,
+        'Package::Stash' => 0,
     },
     ($] >= 5.005 ?
       (ABSTRACT_FROM  => 'lib/Log/Dispatch/ZeroMQ.pm',

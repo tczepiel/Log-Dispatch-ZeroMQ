@@ -3,15 +3,26 @@ package Log::Dispatch::ZeroMQ;
 use strict;
 use warnings;
 
+our $VERSION = '0.01';
+
 use parent 'Log::Dispatch::Output';
-use ZeroMQ qw(:all);
+use ZeroMQ ();
+use ZeroMQ::Constants ();
 use Carp qw(croak);
+use Package::Stash;
 
 sub new {
     my ( $class, %params ) = @_;
 
+    my $p = Package::Stash->new('ZeroMQ::Constants');
+    my $sock_type = $params{zmq_sock_type};
+    unless ( $p->has_symbol("&".$sock_type) ) {
+        croak "ZeroMQ doesn't export '$sock_type'";
+    }
+
+
     bless {
-       _zmq_sock_type => $params{zmq_sock_type},
+       _zmq_sock_type => $p->get_symbol('&'.$sock_type)->(),
        _zmq_bind      => $params{zmq_bind},
     } => $class;
 }
@@ -36,6 +47,31 @@ sub log_message {
     $self->_zmq->send($params{message});
     return;
 }
+
+=cut
+
+=head1 NAME
+
+Log::Dispatch::ZeroMQ
+
+=head1 SYNOPSIS
+
+    use Log::Dispatch;
+
+    my $log = Log::Dispatch->new(
+        outputs => [[
+           'ZeroMQ',
+            zmq_sock_type => 'ZMQ_REQ',
+            zmq_bind      => "tcp://127.0.0.1:8881",
+            min_level     => 'info',
+        ]],
+    );
+
+=head1 DESCRIPTION
+
+Log::Dispatch plugin for ZeroMQ
+
+=cut
 
 
 1;
