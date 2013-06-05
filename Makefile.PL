@@ -2,21 +2,26 @@ use strict;
 use warnings;
 
 use ExtUtils::MakeMaker;
+
+my %required_for_test = (
+    'Test::SharedFork' => 0,
+);
+
 WriteMakefile(
     NAME              => 'Log::Dispatch::ZeroMQ',
     VERSION_FROM      => 'lib/Log/Dispatch/ZeroMQ.pm',
+    ABSTRACT          => 'ZMQ backend for Log::Dispatch',
     PREREQ_PM         => {
         parent             => 0,
         ZMQ                => 0,
         'Log::Dispatch'    => 0,
         Carp               => 0,
-    },
-    TEST_REQUIRES => {
-        'Test::SharedFork' => 0,
+        ($] < 5.005 ? (%required_for_test) : ()),
     },
     ($] >= 5.005 ?
-      (ABSTRACT_FROM  => 'lib/Log/Dispatch/ZeroMQ.pm',
-       AUTHOR         => 'Tomasz Czepiel <tjmc@cpan.org>') : ()),
+      (
+      TEST_REQUIRES => \%required_for_test,
+      AUTHOR         => 'Tomasz Czepiel <tjmc@cpan.org>') : ()),
     LICENSE           => 'perl',
     META_MERGE => {
         resources => {

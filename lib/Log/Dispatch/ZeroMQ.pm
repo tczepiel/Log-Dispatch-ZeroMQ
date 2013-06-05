@@ -5,8 +5,6 @@ use warnings;
 
 our $VERSION = '0.01';
 
-# ABSTRACT: ZMQ backend for Log::Dispatch
-
 use parent 'Log::Dispatch::Output';
 use ZMQ ();
 use ZMQ::Constants ":all";
