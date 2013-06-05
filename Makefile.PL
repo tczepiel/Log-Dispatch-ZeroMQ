@@ -16,11 +16,11 @@ WriteMakefile(
         ZMQ                => 0,
         'Log::Dispatch'    => 0,
         Carp               => 0,
-        ($] < 5.005 ? (%required_for_test) : ()),
+        ($ExtUtils::MakeMaker::VERSION < 6.64 ? (%required_for_test) : ()),
     },
     ($] >= 5.005 ?
       (
-      TEST_REQUIRES => \%required_for_test,
+      ($ExtUtils::MakeMaker::VERSION >= 6.64 ? (TEST_REQUIRES => \%required_for_test) : () ),
       AUTHOR         => 'Tomasz Czepiel <tjmc@cpan.org>') : ()),
     LICENSE           => 'perl',
     META_MERGE => {
