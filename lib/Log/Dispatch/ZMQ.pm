@@ -78,6 +78,18 @@ Nothing.
 
 Please report any bugs on L<http://rt.cpan.org>
 
+=head1 SEE ALSO
+
+=over
+
+=item * L<ZMQ>
+
+=item * L<Alien::ZMQ>
+
+=item * L<ZeroMQ>
+
+=back
+
 =head1 AUTHOR
 
 Tomasz Czepiel E<lt>tjmc@cpan.orgE<gt>
