@@ -51,8 +51,6 @@ sub log_message {
     return;
 }
 
-=cut
-
 =head1 NAME
 
 Log::Dispatch::ZeroMQ
