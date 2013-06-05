@@ -25,7 +25,7 @@ WriteMakefile(
     LICENSE           => 'perl',
     META_MERGE => {
         resources => {
-            repository => 'git://github.com/tczepiel/Log-Dispatch-ZMQ.git',
+            repository => 'git://github.com/tczepiel/perl-log-dispatch-zmq.git',
         },
     },
 );
