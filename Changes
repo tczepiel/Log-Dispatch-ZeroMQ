@@ -1,6 +1,5 @@
 Revision history for Perl extension Log::Dispatch::ZMQ.
 
-0.01  Thu Jan 17 23:28:58 2013
-	- original version; created by h2xs 1.23 with options
-		-X Log::Dispatch::ZMQ
+0.01 Wed Jun 5 2013 CET
+    - released to CPAN.
 
