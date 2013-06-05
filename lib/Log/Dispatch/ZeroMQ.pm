@@ -5,7 +5,7 @@ use warnings;
 
 our $VERSION = '0.01';
 
-#ABSTRACT: ZMQ backend for Log::Dispatch
+# ABSTRACT: ZMQ backend for Log::Dispatch
 
 use parent 'Log::Dispatch::Output';
 use ZMQ ();
@@ -23,7 +23,6 @@ sub new {
     unless ( defined $sock_type ) {
         croak "ZMQ::Constants doesn't export '$params{zmq_sock_type}'";
     }
-
 
     bless {
        _zmq_sock_type => $sock_type,
@@ -74,6 +73,24 @@ Log::Dispatch::ZeroMQ
 =head1 DESCRIPTION
 
 Log::Dispatch plugin for ZeroMQ
+
+=head1 EXPORT
+
+Nothing.
+
+=head1 BUGS
+
+Please report any bugs on L<http://rt.cpan.org>
+
+=head1 AUTHOR
+
+Tomasz Czepiel E<lt>tjmc@cpan.org<gt>
+
+=head1 LICENSE
+
+This library is free software; you can redistribute it and/or modify
+it under the same terms as Perl itself, either Perl version 5.12.4 or,
+at your option, any later version of Perl 5 you may have available.
 
 =cut
 

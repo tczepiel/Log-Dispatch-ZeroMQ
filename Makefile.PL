@@ -1,4 +1,6 @@
-use 5.012004;
+use strict;
+use warnings;
+
 use ExtUtils::MakeMaker;
 WriteMakefile(
     NAME              => 'Log::Dispatch::ZeroMQ',
@@ -8,9 +10,17 @@ WriteMakefile(
         ZMQ                => 0,
         'Log::Dispatch'    => 0,
         Carp               => 0,
+    },
+    TEST_REQUIRES => {
         'Test::SharedFork' => 0,
     },
     ($] >= 5.005 ?
       (ABSTRACT_FROM  => 'lib/Log/Dispatch/ZeroMQ.pm',
        AUTHOR         => 'Tomasz Czepiel <tjmc@cpan.org>') : ()),
+    LICENSE           => 'perl',
+    META_MERGE => {
+        resources => {
+            repository => 'git://github.com/tczepiel/Log-Dispatch-ZeroMQ.git',
+        },
+    },
 );
