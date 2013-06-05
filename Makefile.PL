@@ -8,8 +8,8 @@ my %required_for_test = (
 );
 
 WriteMakefile(
-    NAME              => 'Log::Dispatch::ZeroMQ',
-    VERSION_FROM      => 'lib/Log/Dispatch/ZeroMQ.pm',
+    NAME              => 'Log::Dispatch::ZMQ',
+    VERSION_FROM      => 'lib/Log/Dispatch/ZMQ.pm',
     ABSTRACT          => 'ZMQ backend for Log::Dispatch',
     PREREQ_PM         => {
         parent             => 0,
@@ -25,7 +25,7 @@ WriteMakefile(
     LICENSE           => 'perl',
     META_MERGE => {
         resources => {
-            repository => 'git://github.com/tczepiel/Log-Dispatch-ZeroMQ.git',
+            repository => 'git://github.com/tczepiel/Log-Dispatch-ZMQ.git',
         },
     },
 );

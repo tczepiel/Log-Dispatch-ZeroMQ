@@ -1,9 +1,9 @@
-Log-Dispatch-ZeroMQ version 0.01
+Log-Dispatch-ZMQ version 0.01
 ================================
 
 DESCRIPTION
 
-A Log::Dispatch plugin for ZeroMQ
+A Log::Dispatch plugin for ZMQ
 
 INSTALLATION
 

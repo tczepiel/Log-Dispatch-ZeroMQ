@@ -13,7 +13,7 @@ sub _log {
     my $sock_type = shift;
     Log::Dispatch->new(
         outputs => [[
-           'ZeroMQ',
+           'ZMQ',
             zmq_sock_type => $sock_type,
             zmq_bind      => "tcp://127.0.0.1:8881",
             min_level     => 'info',

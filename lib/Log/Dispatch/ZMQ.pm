@@ -1,4 +1,4 @@
-package Log::Dispatch::ZeroMQ;
+package Log::Dispatch::ZMQ;
 
 use strict;
 use warnings;
@@ -51,7 +51,7 @@ sub log_message {
 
 =head1 NAME
 
-Log::Dispatch::ZeroMQ
+Log::Dispatch::ZMQ
 
 =head1 SYNOPSIS
 
@@ -59,7 +59,7 @@ Log::Dispatch::ZeroMQ
 
     my $log = Log::Dispatch->new(
         outputs => [[
-           'ZeroMQ',
+           'ZMQ',
             zmq_sock_type => 'ZMQ_REQ',
             zmq_bind      => "tcp://127.0.0.1:8881",
             min_level     => 'info',
@@ -68,7 +68,7 @@ Log::Dispatch::ZeroMQ
 
 =head1 DESCRIPTION
 
-Log::Dispatch plugin for ZeroMQ
+Log::Dispatch plugin for ZMQ
 
 =head1 EXPORT
 
