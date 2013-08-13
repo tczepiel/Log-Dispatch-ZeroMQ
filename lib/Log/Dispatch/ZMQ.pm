@@ -3,7 +3,7 @@ package Log::Dispatch::ZMQ;
 use strict;
 use warnings;
 
-our $VERSION = '0.01';
+our $VERSION = '0.02';
 
 use parent 'Log::Dispatch::Output';
 use ZMQ ();
