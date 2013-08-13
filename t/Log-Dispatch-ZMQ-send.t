@@ -8,6 +8,7 @@ use Test::SharedFork;
 use ZMQ;
 use ZMQ::Constants qw(:all);
 use POSIX ":sys_wait_h";
+my $zmq_recv = $ZMQ::BACKEND eq 'ZMQ::LibZMQ2' ? 'recv' : 'recvmsg';
 
 sub _log {
     my $sock_type = shift;
@@ -35,7 +36,7 @@ else {
     my $socket = $ctx->socket(ZMQ_REP);
     $socket->bind("tcp://127.0.0.1:8881");
 
-    my $msg = $socket->recv();
+    my $msg = $socket->$zmq_recv();
 
     cmp_ok($msg->data,'eq', "Hello!");
 
